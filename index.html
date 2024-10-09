@@ -125,11 +125,11 @@
       }
 
       const audioSamples = [
-        '/1-new-york.mp3',
-        '/2-san-francisco.mp3',
-        '/3-london.mp3',
-        '/4-toronto.mp3',
-        '/5-istanbul.mp3',
+        '1-new-york.mp3',
+        '2-san-francisco.mp3',
+        '3-london.mp3',
+        '4-toronto.mp3',
+        '5-istanbul.mp3',
       ]
 
       function printTurn({ turn, conversation, usage, event, testType }) {
@@ -209,7 +209,7 @@
                 };
                 let turn = 0;
                 async function runNextTurn(url) {
-                  const base64Audio = await fetchAndEncodeWav(url);
+                  const base64Audio = await fetchAndEncodeWav(location.href.replace(/\/$/, '') + '/' + url);
 
                   client.realtime.send('input_audio_buffer.append', {
                     audio: base64Audio
